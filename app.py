@@ -98,11 +98,14 @@ def process_message(message: str, thread_id: str = "default"):
     return "No response generated"
 
 
+# Create the graph object for LangGraph CLI compatibility
+graph = create_workflow()
+
+
 # Example usage (for testing)
 if __name__ == "__main__":
     # Start conversation
     input_message = HumanMessage(content="hi! I'm Lance")
-    graph = create_workflow()
     config = get_or_create_thread("1")
     
     output = graph.invoke({"messages": [input_message]}, config) 
